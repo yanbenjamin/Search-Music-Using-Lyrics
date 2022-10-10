@@ -66,7 +66,7 @@ int extract_songData(vector< vector<string> >& file_contents,
     return numSongs;
 }
 
-int main(){
+int main(int argc, char *argv[]){
 
     string filename = "billboard-lyrics.csv";
     vector< vector<string> > fileContents;
@@ -85,11 +85,18 @@ int main(){
         numSongs = extract_songData(fileContents, songNames, artists, all_lyrics, rank, includes_header);
     }
     else{
-        //throw an error 
-        cout << "oops" << endl;
+        cout << "Error in opening the csv file" << endl;
         return -1;
     }
     auto final = high_resolution_clock::now();
     auto timespan = duration_cast< duration<double> >(final - initial);
-    cout << numSongs << endl;
+
+    int num_songs_to_sample = 10;
+
+    cout << "Number of Songs in " << filename << ": " << numSongs << endl;
+
+    cout << "First " << num_songs_to_sample << " Song Names: " << vecToString(truncate_vector(songNames,0,10)) << endl;
+    cout << "First " << num_songs_to_sample << " Artists: " << vecToString(truncate_vector(artists,0,10)) << endl;
+    cout << "First " << num_songs_to_sample << " Ranks: " << vecToString(truncate_vector(rank,0,10)) << endl;
+
 }
