@@ -21,3 +21,11 @@ template<typename type> vector<type> truncate_vector(vector<type> const &vec, in
 
 string vecToString(vector<int> vec);
 string vecToString(vector<string> vec);
+
+vector<string> split_string(string text, char delimiter);
+
+set<string> createWordSet(string lyrics);
+
+string generateSongID(string songName, string authorName);
+
+string tolower_string(string str);

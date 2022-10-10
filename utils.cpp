@@ -82,7 +82,15 @@ set<string> createWordSet(string lyrics){
 
 /* combines the song name with the artist to form the full song description */
 string generateSongID(string songName, string authorName){
-    return songName + " | " + authorName;
+    return songName + " by " + authorName;
+}
+
+string tolower_string(string str){
+    string new_string = "";
+    for (int i = 0; i < str.size(); i++){
+        new_string += tolower(str[i]);
+    }
+    return new_string;
 }
 
 
