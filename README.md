@@ -3,7 +3,7 @@
 ## Description
 This program is designed to assist people who have a song that keeps playing in their head and happens to know a few catchy lyrics, but can't quite remember its name. More specifically, this program takes a search query, interprets it as a sequence of plausible song keywords, and identifies / ranks songs that best match those keywords. The song data is acquired from the Billboard Top 100 over the last half century. 
 
-![image of search using the engine](./repo_images/engine1.jpg)
+![image of search using the engine](./repo_images/engine1.png)
 
 <br/>
 
@@ -31,7 +31,7 @@ You can also run it to print more candidate songs if needed. As a note, make sur
 
 Below are some example runs using the `build/search` executable to identify forgotten songs. 
 
-![image of search using the engine](./repo_images/engine2.jpg)
+![image of search using the engine](./repo_images/engine2.png)
 
 ## Key Source Files 
 
@@ -40,8 +40,7 @@ Below are some example runs using the `build/search` executable to identify forg
 | `utils.h/cpp`       | Includes helper functions for analyzing and manipulating strings and vector.
 | `process_song_data.cpp/h`                 | Includes tools for reading the lyrics csv file and encoding the song information in data strctures. 
 | `build_data_maps.cpp/h`                | Used for creating "dictionaries" that map words to songs that contain them and map songs to their lyrics. 
-| `generate_queue.cpp/h`                 | Creates an STL C++ priority queue that ranks songs according to a query based on (1) how many words in the query appear in the song and (2) how
-frequent those word in the song are. 
+| `generate_queue.cpp/h`                 | Creates an STL C++ priority queue that ranks songs according to a query based on (1) how many words in the query appear in the song and (2) how frequent those word in the song are. 
 | `search.cpp`                | Contains the main program for providing fragmented lyrics and getting ranked search results for plausible songs.    
 | `test_data_processor`                 | A testing and debugging program for ensuring that the information is being read correctly form the csv file. 
 
