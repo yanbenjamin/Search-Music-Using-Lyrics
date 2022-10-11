@@ -1,3 +1,10 @@
+/*
+build_data_maps.h
+----------------------------------------------------
+Used for creating "dictionaries" or C++ maps that map words to songs 
+that contain them and map songs to their lyrics.
+*/
+
 #include <iostream>
 #include <fstream>
 #include "errno.h"

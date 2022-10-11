@@ -1,3 +1,9 @@
+/*
+process_song_data.cpp
+----------------------------------------------------
+Source code implementation of the functions described in process_song_data.h
+*/
+
 #include <iostream>
 #include <fstream>
 #include "errno.h"

@@ -1,3 +1,9 @@
+/*
+search.cpp
+----------------------------------------------------
+ Contains the main source code for providing fragmented lyrics 
+ and getting ranked search results for plausible songs.
+*/
 
 #include "generate_queue.h"
 

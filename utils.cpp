@@ -1,3 +1,9 @@
+/*
+utils.cpp
+----------------------------------------------------
+Source code implementation of the functions described in utils.h
+*/
+
 #include "utils.h"
 #include <string>
 #include <vector>

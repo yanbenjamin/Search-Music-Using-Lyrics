@@ -1,3 +1,9 @@
+/*
+build_data_maps.cpp
+----------------------------------------------------
+Source code implementation of the functions described in build_data_maps.h
+*/
+
 #include <iostream>
 #include <fstream>
 #include "errno.h"

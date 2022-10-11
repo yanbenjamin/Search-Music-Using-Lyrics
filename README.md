@@ -42,7 +42,7 @@ Below are some example runs using the `build/search` executable to identify forg
 | `build_data_maps.cpp/h`                | Used for creating "dictionaries" that map words to songs that contain them and map songs to their lyrics. 
 | `generate_queue.cpp/h`                 | Creates an STL C++ priority queue that ranks songs according to a query based on (1) how many words in the query appear in the song and (2) how frequent those word in the song are. 
 | `search.cpp`                | Contains the main program for providing fragmented lyrics and getting ranked search results for plausible songs.    
-| `test_data_processor`                 | A testing and debugging program for ensuring that the information is being read correctly form the csv file. 
+| `test_data_processor.cpp`                 | A testing and debugging program for ensuring that the information is being read correctly form the csv file. 
 
 
 

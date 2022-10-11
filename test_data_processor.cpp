@@ -1,3 +1,10 @@
+/*
+test_data_processor.cpp
+----------------------------------------------------
+A testing and debugging program for ensuring that 
+the information is being read correctly form the csv file. 
+*/
+
 #include <iostream>
 #include <fstream>
 #include "errno.h"

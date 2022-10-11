@@ -1,3 +1,9 @@
+/*
+generate_queue.cpp
+----------------------------------------------------
+Source code implementation of the functions described in generate_queue.h
+*/
+
 #include <iostream>
 #include <fstream>
 #include "errno.h"
@@ -39,25 +45,26 @@ void buildMatchingQueue(string query, map<string,vector<string>>& lyricMap,
    double MAX_SONG_LENGTH = 10e5;
    vector<string> searchWords = split_string(query,' ');
    
+   //a potential match is any song containing at least one word in the query
    set<string> potentialMatches;
    for (string word: searchWords){
        set<string> current_matches = index[tolower_string(word)];
        potentialMatches.insert(current_matches.begin(), current_matches.end());
-     //  potentialMatches.unionWith(index[tolower_string(word)]);  // runs in O(nlogn)
-     //set_union(potentialMatches.begin(), )
    }
-   for (string song: potentialMatches){  // runs in O(wlogn)
+   // goes through all potential matches, assigns them a priority based on how well 
+   // the lyrics match with the search query, and inserts them into a priority queue. 
+   for (string song: potentialMatches){  
        int aggregate_frequency = 0;
        int numMatchingWords = 0;
-       for (string word: searchWords){  // runs in O(w)
-           int word_frequency = findWordFrequency(song,tolower_string(word),lyricMap); // runs in O(1)
+       for (string word: searchWords){  
+           int word_frequency = findWordFrequency(song,tolower_string(word),lyricMap); 
            if (word_frequency > 0){
                numMatchingWords += 1;
            }
           aggregate_frequency += findWordFrequency(song,tolower_string(word),lyricMap);
        }
        
-       SongObject songobj;
+       SongObject songobj; // song object stores both songname and priority
        songobj.priority = MAX_SONG_LENGTH * numMatchingWords + aggregate_frequency;
        songobj.songName = song; 
        matchingSongsQueue.push(songobj);
@@ -65,8 +72,11 @@ void buildMatchingQueue(string query, map<string,vector<string>>& lyricMap,
    }
 }
 
+
 void generate_SongDatabase(map<string, vector<string>>& lyricMap, 
            map<string, set<string>>& inverted_index){
+    
+    // extracts artist, song name, and lyrical information from the .csv file
     string filename = "billboard-lyrics.csv";
     vector< vector<string> > fileContents;
     vector<string> names; 
@@ -82,12 +92,12 @@ void generate_SongDatabase(map<string, vector<string>>& lyricMap,
          throw invalid_argument("Unable to open the csv file");
     }
 
+    //generates an identifier for each song by concatenating the name with its artists
     vector<string> songNames;
     for (int i = 0; i < names.size(); i++){
         songNames.push_back(generateSongID(names[i],artists[i]));
     }
 
-    //map<string, vector<string>> lyricMap;
     buildLyricMap(songNames,all_lyrics,lyricMap);
 
     map<string, int> songRankings;
@@ -99,7 +109,5 @@ void generate_SongDatabase(map<string, vector<string>>& lyricMap,
     for (int i = 0; i < all_lyrics.size(); i++){
         wordSets.push_back(createWordSet(all_lyrics[i]));
     }
-
-    //map<string, set<string>> inverted_index;
     buildInvertedIndex(songNames,wordSets,inverted_index);
 }
